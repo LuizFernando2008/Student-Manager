@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/style.css">
+<title>Alunos</title>
+<meta name="author" content="Luiz Fernando">
+<script src="https://kit.fontawesome.com/006642858d"></script>
+</head>
+<body>
+	
+	<header>
+		
+		<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #5e35b1">
+		
+			<a class="navbar-brand" href="/">
+				<img src="/img/icon.png" width="120px"/>
+			</a>
+			
+<!-- 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navMobile"> -->
+<!-- 				<span class="navbar-toggler-icon"></span> -->
+<!-- 			</button> -->
+			
+			<div id="navMobile" class="navbar-collapse collapse justify-content-end">
+				<a class="btn-nav nav-item nav-link" th:href="@{/}"> HOME&nbsp;&nbsp;&nbsp;</a>
+				<a class="btn-nav nav-item nav-link" th:href="@{cadastrarAluno}"> CADASTRAR ALUNO&nbsp;&nbsp;&nbsp;</a>
+	 			<a class="btn-nav nav-item nav-link" th:href="@{insertNotas}"> CADASTRAR NOTAS&nbsp;&nbsp;&nbsp;</a>
+			</div>
+			
+		</nav>
+		
+	</header>
+	
+	<div class="container" style="margin-top: 50px">
+		<h3>Alunos Cadastrados</h3>
+		<hr>
+	</div>
+	
+	<table class="table table-bordered table-hover">
+		<thead>
+			<th scope="col">Nome</th>
+			<th scope="col">Curso</th>
+			<th scope="col">Ano Escolar</th>
+			<th scope="col">Turno</th>
+			<th scope="col">Editar/Excluir</th>
+			
+		</thead>
+		<tbody>
+			<tr scope="row" th:each="alunos : ${alunosList}">
+				<td th:text="${alunos.nome}"></td>
+				<td th:text="${alunos.curso}"></td>
+				<td th:text="${alunos.serie}"></td>
+				<td th:text="${alunos.turno}"></td>
+				
+				<td>
+					<a class="btn btn-primary" th:href="@{alterar/{id}(id=${alunos.id})}">
+						Editar
+					</a>
+					
+					<a class="btn btn-danger" th:href="@{excluir/{id}(id=${alunos.id})}">
+						Excluir
+					</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+	<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+	
+</body>
+</html>
