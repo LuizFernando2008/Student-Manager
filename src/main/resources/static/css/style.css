@@ -1,0 +1,9 @@
+@charset "ISO-8859-1";
+*{margin: 0; padding: 0; box-sizing: border-box;}
+nav{cursor: pointer;color: #fff}
+a{cursor: poniter;}
+
+/* Responsividade */
+@media screen and (max-width: 667px){
+	nav{height: 100%}
+}
